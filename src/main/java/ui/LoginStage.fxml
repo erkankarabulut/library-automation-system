@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-min-height: 500; -fx-min-width: 800;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.action.LoginAction">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="loginButton" layoutX="200.0" layoutY="390.0" mnemonicParsing="false" text="Login" />
+                   <Button fx:id="signUpButton" layoutY="390.0" layoutX="295" mnemonicParsing="false" text="Sign Up" BorderPane.alignment="CENTER" />
+                   <Label layoutX="30.0" layoutY="260.0" text="Username or Card ID:" />
+                  <Label layoutX="30.0" layoutY="300.0" text="Password:" />
+                  <TextField fx:id="usernameIDField" layoutX="200.0" layoutY="260.0"  />
+                  <Label layoutX="200.0" layoutY="333.0" text="Forgot your password?" />
+                  <Label fx:id="name" layoutX="220.0" layoutY="34.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="logo" fitHeight="180.0" fitWidth="180.0" layoutX="29.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/logo.jpg" />
+                     </image></ImageView>
+                  <PasswordField fx:id="passwordField" layoutX="200.0" layoutY="300.0" />
+                  <Label fx:id="loginErrorMessage" layoutX="122.0" layoutY="345.0" />
+                  <Label layoutX="30.0" layoutY="470.0" text="About" />
+                   <Label layoutX="100.0" layoutY="470.0" text="Help" />
+                   <Label layoutX="165.0" layoutY="470.0" text="Exit" />
+               </children></AnchorPane>
+
+</BorderPane>
