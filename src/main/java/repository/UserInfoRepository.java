@@ -9,15 +9,21 @@ public class UserInfoRepository extends BaseRepository {
 
     String kartID;
 
-    public boolean checkUser(String userNameOrID, String userPassword) throws SQLException {
+    public boolean checkUser(String userNameOrID, String userPassword, Boolean idLogin)
+            throws SQLException {
         Boolean result = false;
         String encryptedPsw = DigestUtils.shaHex(userPassword);
 
         this.connect();
         this.createStatement();
 
-        resultSet = this.statement.executeQuery("select * from Kullanicilar where " +
-                "Username = '" + userNameOrID + "' and UserPassword = '" + encryptedPsw + "'");
+        if(idLogin){
+            resultSet = this.statement.executeQuery("select * from Kullanicilar\n" +
+                    "where kullaniciId = '" + userNameOrID + "'");
+        }else{
+            resultSet = this.statement.executeQuery("select * from Kullanicilar where " +
+                    "Username = '" + userNameOrID + "' and UserPassword = '" + encryptedPsw + "'");
+        }
 
         if(resultSet.next()){
             result = true;

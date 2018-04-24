@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="main.java.action.AboutAction"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <Label fx:id="aboutHeader" layoutX="200" layoutY="50" text="About" textFill="brown" >
+        <font>
+            <Font size="20" />
+        </font>
+    </Label>
+    <Text id="aboutString" layoutY="100" layoutX="20" fx:id="aboutString" />
+    <Button fx:id="back" layoutX="400" layoutY="350" text="Back" mnemonicParsing="false" />
+
+</AnchorPane>
