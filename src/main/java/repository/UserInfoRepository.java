@@ -63,28 +63,28 @@ public class UserInfoRepository extends BaseRepository {
                     resultSet.next();
                     Integer usertype = resultSet.getInt("type");
 
-                    System.out.println("Type: " + usertype);
-
                     statement.executeUpdate("insert into Kullanicilar (kullaniciId," +
                             "KullaniciTipi, Username, UserPassword) values('" +
                             id + "'," + usertype + ",'" +
                             values.get("username") + "','" + encryptedPsw + "')");
 
-                    String sql = "insert into KullaniciBilgileri (kullaniciId," +
+                    statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
                             "BilgiTipi, BilgiDegeri) values('" + id + "','email','"
-                            + values.get("email") + "')";
-                    System.out.println("geldi" + sql);
-                    statement.executeUpdate(sql);
-                    statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
-                            "BilgiTipi, BilgiDegeri) values('" + id + "','tel','"
-                            + values.get("tel") + "')");
-                    statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
+                            + values.get("email") + "')");
+                    if(values.get("tel").toString().length()!=0)
+                        statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
+                                "BilgiTipi, BilgiDegeri) values('" + id + "','tel','"
+                                + values.get("tel") + "')");
+                    if(values.get("gender").toString().length()!=0)
+                        statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
                             "BilgiTipi, BilgiDegeri) values('" + id + "','gender','"
                             + values.get("gender") + "')");
-                    statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
+                    if(values.get("name").toString().length()!=0)
+                        statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
                             "BilgiTipi, BilgiDegeri) values('" + id + "','name','"
                             + values.get("name") + "')");
-                    statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
+                    if(values.get("surname").toString().length()!=0)
+                        statement.executeUpdate("insert into KullaniciBilgileri (kullaniciId," +
                             "BilgiTipi, BilgiDegeri) values('" + id + "','surname','"
                             + values.get("surname") + "')");
                 }
@@ -95,4 +95,118 @@ public class UserInfoRepository extends BaseRepository {
         return result;
     }
 
+    public boolean checkUsernameId(String username, String ID){
+        try{
+
+            this.connect();
+            this.createStatement();
+
+            resultSet = statement.executeQuery("select * from Kullanicilar where " +
+                    "Username = '" + username + "' and kullaniciId = '" + ID + "'");
+
+            if(resultSet.next()){
+                return true;
+            }
+
+            this.closeConnection();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public void changePassword(String id, String psw){
+
+        try {
+
+            this.connect();
+            this.createStatement();
+
+            String newPsw = DigestUtils.shaHex(psw);
+            statement.executeUpdate("update Kullanicilar set userPassword = '"
+            + newPsw + "' where kullaniciId = '" + id + "'");
+
+            this.closeConnection();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public boolean checkAuthorization(String id, boolean isID){
+        boolean result = true;
+
+        try {
+            this.connect();
+            this.createStatement();
+
+            if(isID){
+                resultSet = statement.executeQuery("select kullaniciTipi as Tip from " +
+                        "Kullanicilar where kullaniciId = '" + id + "'");
+                resultSet.next();
+                if(resultSet.getInt("Tip") != 0){
+                    result = false;
+                }
+            }else{
+                String ID = null;
+                resultSet = statement.executeQuery("select kullaniciId as id from Kullanicilar " +
+                        "where username = '" + id + "'");
+                resultSet.next();
+                ID = resultSet.getString("id");
+
+                resultSet = statement.executeQuery("select kullaniciTipi as Tip from " +
+                        "Kullanicilar where kullaniciId = '" + ID + "'");
+                resultSet.next();
+                if(resultSet.getInt("Tip") != 0){
+                    result = false;
+                }
+            }
+
+            this.closeConnection();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return  result;
+    }
+
+    public boolean checkIfUserAlreadyHave(String userID, Boolean isID, String productID){
+        Boolean result = true;
+
+        try {
+            this.connect();
+            this.createStatement();
+
+            String ID = null;
+            if(!isID){
+                resultSet = statement.executeQuery("select kullaniciId as id from Kullanicilar where " +
+                        "username = '" + userID + "'");
+                resultSet.next();
+                ID = resultSet.getString("id");
+            }else{
+                ID = userID;
+            }
+
+            resultSet = statement.executeQuery("select * from OduncAlinanlar where kullaniciId = " +
+                    "'" + ID + "' and urunId = '" + productID + "'");
+            if(resultSet.next()){
+                result = false;
+            }
+
+            resultSet = statement.executeQuery("select * from RezerveEdilenler where kullaniciId = " +
+                    "'" + ID + "' and urunId = '" + productID + "'");
+            if(resultSet.next()){
+                result = false;
+            }
+
+            this.closeConnection();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

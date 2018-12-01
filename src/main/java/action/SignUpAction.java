@@ -39,7 +39,7 @@ public class SignUpAction implements Initializable{
 
     @FXML Button clearButton;
     @FXML Button registerButton;
-    @FXML Button goLoginPageButton;
+    @FXML Button backButton;
 
     @FXML Label registerErrorMessage;
 
@@ -53,8 +53,9 @@ public class SignUpAction implements Initializable{
 
         clearButton.setPrefSize(80, 20);
         registerButton.setPrefSize(80,20);
+        backButton.setPrefSize(80,20);
 
-        goLoginPageButton.setVisible(false);
+        //back.setVisible(false);
 
         addActionListeners();
     }
@@ -105,8 +106,8 @@ public class SignUpAction implements Initializable{
                             }
 
                             if(result.contains("Ok")){
-                                goLoginPageButton.setVisible(true);
-                                registerErrorMessage.setText("You are successfully registered!\nClick on the login button on the right side to go to the login page ...");
+                                //goLoginPageButton.setVisible(true);
+                                registerErrorMessage.setText("You are successfully registered!\nClick on the back button to go to the login page ...");
                             } else{
                                 registerErrorMessage.setText(result);
                             }
@@ -141,12 +142,12 @@ public class SignUpAction implements Initializable{
             }
         });
 
-        goLoginPageButton.setOnAction(new EventHandler<ActionEvent>() {
+        backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
 
-                    Stage closeStage = (Stage) goLoginPageButton.getScene().getWindow();
+                    Stage closeStage = (Stage) backButton.getScene().getWindow();
                     closeStage.close();
 
                     Parent root = FXMLLoader.load(getClass().getResource("../ui/LoginStage.fxml"));

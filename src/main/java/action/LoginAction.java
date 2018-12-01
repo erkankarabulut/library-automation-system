@@ -50,6 +50,7 @@ public class LoginAction implements Initializable{
     Hyperlink exitLink;
     Hyperlink aboutLink;
     Hyperlink helpLink;
+    FXMLLoader fxmlLoader;
 
     ToggleGroup toggleGroup;
     Boolean     idLogin;
@@ -85,6 +86,10 @@ public class LoginAction implements Initializable{
         addActionListeners();
     }
 
+    public WelcomeScreenAction getController() {
+        return (WelcomeScreenAction) fxmlLoader.getController();
+    }
+
     public void addActionListeners(){
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -98,10 +103,20 @@ public class LoginAction implements Initializable{
                         Stage closeStage = (Stage) loginWithUsername.getScene().getWindow();
                         closeStage.close();
 
-                        Parent root = FXMLLoader.load(getClass().getResource("../ui/ComponentListStage.fxml"));
+
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/ComponentListStage.fxml"));
+
+                        Parent root = (Parent)fxmlLoader.load();
+                        WelcomeScreenAction controller = fxmlLoader.getController();
+                        controller.setUserIDorName(usernameOrID);
+                        controller.setID(idLogin);
+                        Scene scene = new Scene(root);
+
                         Stage componentListStage = new Stage();
                         componentListStage.setTitle("Aydinlik University Library Information System");
-                        componentListStage.setScene(new Scene(root, 500, 400));
+                        componentListStage.setScene(scene);
+                        componentListStage.setWidth(1320);
+                        componentListStage.setHeight(740);
                         componentListStage.show();
 
                     }else{
@@ -111,9 +126,7 @@ public class LoginAction implements Initializable{
                             loginErrorMessage.setText("Username or password is incorrect ..!");
                         }
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -122,20 +135,22 @@ public class LoginAction implements Initializable{
         signUpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Parent root = null;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("../ui/SignUpStage.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
                 Stage closeStage = (Stage) signUpButton.getScene().getWindow();
                 closeStage.close();
 
-                Stage componentListStage = new Stage();
-                componentListStage.setTitle("Aydinlik University Library Information System");
-                componentListStage.setScene(new Scene(root, 850, 550));
-                componentListStage.show();
+                try {
+
+                    Parent root = FXMLLoader.load(getClass().getResource("../ui/SignUpStage.fxml"));
+                    Stage componentListStage = new Stage();
+                    componentListStage.setTitle("Aydinlik University Library Information System");
+                    componentListStage.setScene(new Scene(root, 850, 550));
+                    componentListStage.show();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
@@ -146,6 +161,8 @@ public class LoginAction implements Initializable{
                 passwordLabel.setVisible(true);
 
                 usernameIdLabel.setText("Username: ");
+                usernameIDField.setText("");
+                passwordField.setText("");
                 idLogin = false;
             }
         });
@@ -156,6 +173,8 @@ public class LoginAction implements Initializable{
                 passwordLabel.setVisible(false);
                 passwordField.setVisible(false);
                 usernameIdLabel.setText("ID: ");
+                usernameIDField.setText("");
+                passwordField.setText("");
                 idLogin = true;
             }
         });

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.java</OriginalElement>
+  <nodes>
+    <node x="1487.9479166666667" y="1438.0">main.java.action.LoginAction</node>
+    <node x="1176.5581597222224" y="1243.5">main.java.action.ChangePasswordAction</node>
+    <node x="253.0" y="1628.0">main.java.action.AboutAction</node>
+    <node x="22.703559027777942" y="560.0">main.java.repository.ProductInfoRepository</node>
+    <node x="257.48741319444457" y="369.5">main.java.beans.Journal</node>
+    <node x="26.9409722222224" y="863.0">main.java.action.ProductManagementAction</node>
+    <node x="834.7035590277779" y="917.5">main.java.repository.ReserveProductRepository</node>
+    <node x="1232.0729166666667" y="863.5">main.java.repository.UserInfoRepository</node>
+    <node x="493.70355902777794" y="917.5">main.java.repository.BorrowProductRepository</node>
+    <node x="141.98741319444457" y="0.0">main.java.beans.Product</node>
+    <node x="619.0" y="1628.0">main.java.action.HelpAction</node>
+    <node x="0.0" y="342.0">main.java.beans.Book</node>
+    <node x="361.5785590277779" y="1162.0">main.java.action.WelcomeScreenAction</node>
+    <node x="630.7374131944446" y="302.0">main.java.repository.BaseRepository</node>
+    <node x="1517.5581597222224" y="1230.0">main.java.action.SignUpAction</node>
+    <node x="0.0" y="1628.0">main.java.app.Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.java.action.SignUpAction" target="main.java.repository.UserInfoRepository">
+      <point x="80.25" y="-45.0" />
+      <point x="1758.3081597222224" y="1132.0" />
+      <point x="1547.6354166666667" y="1132.0" />
+      <point x="86.0625" y="99.0" />
+    </edge>
+    <edge source="main.java.action.WelcomeScreenAction" target="main.java.repository.BorrowProductRepository">
+      <point x="41.75" y="-113.0" />
+      <point x="570.3285590277778" y="1092.0" />
+      <point x="734.4535590277779" y="1092.0" />
+      <point x="80.25" y="45.0" />
+    </edge>
+    <edge source="main.java.action.ProductManagementAction" target="main.java.repository.ProductInfoRepository">
+      <point x="80.25" y="-99.5" />
+      <point x="267.6909722222224" y="838.0" />
+      <point x="191.45355902777794" y="838.0" />
+      <point x="-56.25" y="126.5" />
+    </edge>
+    <edge source="main.java.action.WelcomeScreenAction" target="main.java.repository.UserInfoRepository">
+      <point x="125.25" y="-113.0" />
+      <point x="653.8285590277778" y="1122.0" />
+      <point x="1260.7604166666667" y="1122.0" />
+      <point x="-200.8125" y="99.0" />
+    </edge>
+    <edge source="main.java.repository.ProductInfoRepository" target="main.java.repository.BaseRepository">
+      <point x="180.0" y="-126.5" />
+      <point x="427.70355902777794" y="530.0" />
+      <point x="687.4874131944446" y="530.0" />
+      <point x="-170.25" y="99.0" />
+    </edge>
+    <edge source="main.java.repository.ReserveProductRepository" target="main.java.repository.BaseRepository">
+      <point x="0.0" y="-45.0" />
+      <point x="994.7035590277779" y="540.0" />
+      <point x="914.4874131944446" y="540.0" />
+      <point x="56.75" y="99.0" />
+    </edge>
+    <edge source="main.java.action.WelcomeScreenAction" target="main.java.beans.Journal">
+      <point x="-13.916666666666629" y="-113.0" />
+      <point x="514.6618923611113" y="1092.0" />
+      <point x="483.20355902777794" y="1092.0" />
+      <point x="483.20355902777794" y="520.0" />
+      <point x="376.6540798611112" y="520.0" />
+      <point x="47.66666666666663" y="31.5" />
+    </edge>
+    <edge source="main.java.repository.BorrowProductRepository" target="main.java.repository.BaseRepository">
+      <point x="0.0" y="-45.0" />
+      <point x="654.2035590277779" y="540.0" />
+      <point x="800.9874131944446" y="540.0" />
+      <point x="-56.75" y="99.0" />
+    </edge>
+    <edge source="main.java.beans.Book" target="main.java.beans.Product">
+      <point x="0.0" y="-59.0" />
+      <point x="94.5" y="277.0" />
+      <point x="188.98741319444457" y="277.0" />
+      <point x="-47.0" y="126.0" />
+    </edge>
+    <edge source="main.java.action.ProductManagementAction" target="main.java.action.WelcomeScreenAction">
+      <point x="80.25" y="99.5" />
+      <point x="267.6909722222224" y="1122.0" />
+      <point x="431.1618923611113" y="1122.0" />
+      <point x="-97.41666666666657" y="-113.0" />
+    </edge>
+    <edge source="main.java.action.WelcomeScreenAction" target="main.java.action.ProductManagementAction">
+      <point x="-125.24999999999989" y="-113.0" />
+      <point x="403.328559027778" y="1132.0" />
+      <point x="107.1909722222224" y="1132.0" />
+      <point x="-80.25" y="99.5" />
+    </edge>
+    <edge source="main.java.repository.ProductInfoRepository" target="main.java.beans.Journal">
+      <point x="0.0" y="-126.5" />
+      <point x="247.70355902777794" y="540.0" />
+      <point x="281.3207465277779" y="540.0" />
+      <point x="-47.666666666666686" y="31.5" />
+    </edge>
+    <edge source="main.java.beans.Journal" target="main.java.beans.Product">
+      <point x="0.0" y="-31.5" />
+      <point x="328.98741319444457" y="277.0" />
+      <point x="282.98741319444457" y="277.0" />
+      <point x="47.0" y="126.0" />
+    </edge>
+    <edge source="main.java.action.WelcomeScreenAction" target="main.java.beans.Book">
+      <point x="-153.0833333333332" y="-113.0" />
+      <point x="375.4952256944447" y="1142.0" />
+      <point x="0.203559027777942" y="1142.0" />
+      <point x="0.203559027777942" y="540.0" />
+      <point x="31.5" y="540.0" />
+      <point x="-63.0" y="59.0" />
+    </edge>
+    <edge source="main.java.action.WelcomeScreenAction" target="main.java.repository.ReserveProductRepository">
+      <point x="69.58333333333337" y="-113.0" />
+      <point x="598.1618923611113" y="1102.0" />
+      <point x="914.7035590277779" y="1102.0" />
+      <point x="-80.0" y="45.0" />
+    </edge>
+    <edge source="main.java.repository.ProductInfoRepository" target="main.java.beans.Book">
+      <point x="-180.0" y="-126.5" />
+      <point x="67.70355902777794" y="540.0" />
+      <point x="94.5" y="540.0" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="main.java.action.LoginAction" target="main.java.repository.UserInfoRepository">
+      <point x="107.0" y="-72.5" />
+      <point x="1755.4479166666667" y="1418.0" />
+      <point x="1860.0581597222224" y="1418.0" />
+      <point x="1860.0581597222224" y="1112.0" />
+      <point x="1662.3854166666667" y="1112.0" />
+      <point x="200.8125" y="99.0" />
+    </edge>
+    <edge source="main.java.action.LoginAction" target="main.java.action.WelcomeScreenAction">
+      <point x="-107.0" y="-72.5" />
+      <point x="1541.4479166666667" y="1418.0" />
+      <point x="528.5785590277778" y="1418.0" />
+      <point x="0.0" y="113.0" />
+    </edge>
+    <edge source="main.java.repository.UserInfoRepository" target="main.java.repository.BaseRepository">
+      <point x="0.0" y="-99.0" />
+      <point x="1461.5729166666667" y="540.0" />
+      <point x="1027.9874131944446" y="540.0" />
+      <point x="170.25" y="99.0" />
+    </edge>
+    <edge source="main.java.action.WelcomeScreenAction" target="main.java.repository.ProductInfoRepository">
+      <point x="-41.74999999999994" y="-113.0" />
+      <point x="486.82855902777794" y="1102.0" />
+      <point x="412.64322916666686" y="1102.0" />
+      <point x="412.64322916666686" y="838.0" />
+      <point x="416.45355902777794" y="838.0" />
+      <point x="168.75" y="126.5" />
+    </edge>
+    <edge source="main.java.action.ChangePasswordAction" target="main.java.repository.UserInfoRepository">
+      <point x="-80.25" y="-31.5" />
+      <point x="1256.8081597222224" y="1142.0" />
+      <point x="1375.5104166666667" y="1142.0" />
+      <point x="-86.0625" y="99.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.636018411967779" x="707.0092274289852" y="1099.1062058983175" />
+  <SelectedNodes>
+    <node>main.java.repository.BorrowProductRepository</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
